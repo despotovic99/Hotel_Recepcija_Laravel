@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\GostCollection;
+use App\Http\Resources\GostResource;
 use App\Models\Gost;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,7 @@ class GostController extends Controller
      */
     public function show(Gost $gost)
     {
-        $gost
+        return new GostResource($gost);
     }
 
     /**

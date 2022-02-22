@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('hotelska_soba', function (Blueprint $table) {
+        Schema::table('hotelska_sobas', function (Blueprint $table) {
 
             $table->boolean('terasa');
             $table->boolean('kuhinja');
