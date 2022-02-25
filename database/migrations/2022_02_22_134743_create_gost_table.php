@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ime');
             $table->string('prezime');
             $table->date('datum_rodjenja');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('br_telefona');
             $table->string('pol');
             $table->boolean('stranac');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gost');
+        Schema::dropIfExists('gosts');
     }
 };

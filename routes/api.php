@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\GostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+
+Route::group(['middleware'=>['auth:sanctum']],function (){
+
+    Route::get('/profil',function (Request $request){
+        return auth()->user();
+    });
+
+    Route::resource('gost',GostController::class)->only(['update','store','destroy']);
+
+    Route::post('logout',[AuthController::class,'logout']);
+
+});
+

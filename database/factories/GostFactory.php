@@ -24,7 +24,7 @@ class GostFactory extends Factory
             'email'=>$this->faker->email(),
             'br_telefona'=>$this->faker->phoneNumber(),
             'pol'=>$this->faker->randomElement(['musko', 'zensko']),
-            'straniGost'=>$this->faker->randomElement(['da','ne'])
+            'strani_gost'=>$this->faker->randomElement([true,false])
         ];
     }
 }
