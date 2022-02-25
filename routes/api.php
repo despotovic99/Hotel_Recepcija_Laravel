@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\GostController;
+use App\Http\Controllers\HotelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::group(['middleware'=>['auth:sanctum']],function (){
     });
 
     Route::resource('gost',GostController::class)->only(['update','store','destroy']);
+    Route::resource('hotel',HotelController::class)->only(['update','store','destroy']);
 
     Route::post('logout',[AuthController::class,'logout']);
 

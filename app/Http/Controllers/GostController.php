@@ -44,10 +44,10 @@ class GostController extends Controller
            'ime'=>'required|string',
            'prezime'=>'required|string',
            'datum_rodjenja'=>'required|date',
-           'email'=>'required|string|unique',
+           'email'=>'required|string|unique:gosts',
            'br_telefona'=>'required|string',
            'pol'=>'required|string',
-           'strani_gost'=>'required'
+           'strani_gost'=>'required|boolean'
 
         ]);
 
@@ -66,7 +66,7 @@ class GostController extends Controller
             'strani_gost'=>$request->strani_gost
         ]);
 
-        return response()->json(['Uspesno sacuvan gost!'],new GostResource($gost));
+        return response()->json(['Uspesno sacuvan gost!',new GostResource($gost)]);
     }
 
     /**
@@ -105,10 +105,10 @@ class GostController extends Controller
             'ime'=>'required|string',
             'prezime'=>'required|string',
             'datum_rodjenja'=>'required|date',
-            'email'=>'required|string|unique',
+            'email'=>'required|string',
             'br_telefona'=>'required|string',
             'pol'=>'required|string',
-            'strani_gost'=>'required|boolean'
+            'strani_gost'=>'required'
 
         ]);
 
@@ -126,7 +126,7 @@ class GostController extends Controller
         $gost->strani_gost=$request->strani_gost;
         $gost->save();
 
-        return response()->json(['Uspesno izmenjen gost!'],new GostResource($gost));
+        return response()->json(['Uspesno izmenjen gost!',new GostResource($gost)]);
     }
 
     /**

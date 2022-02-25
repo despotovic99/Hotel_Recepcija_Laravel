@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\HotelCollection;
+use App\Http\Resources\HotelResource;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HotelController extends Controller
 {
@@ -14,7 +17,8 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        $hoteli=Hotel::all();
+        return new HotelCollection($hoteli);
     }
 
     /**
@@ -35,7 +39,24 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator= Validator::make($request->all(),[
+            'naziv'=>'required|string',
+            'adresa'=>'required|string',
+            'broj_zvezdica'=>'required|string'
+
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+
+        $hotel = Hotel::create([
+            'naziv'=>$request->naziv,
+            'adresa'=>$request->adresa,
+            'broj_zvezdica'=>$request->broj_zvezdica,
+
+        ]);
+        return response()->json(['Uspesno sacuvan hotel.',new HotelResource($hotel)]);
     }
 
     /**
@@ -46,7 +67,7 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        return new HotelResource($hotel);
     }
 
     /**
@@ -69,7 +90,22 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $validator= Validator::make($request->all(),[
+            'naziv'=>'required|string',
+            'adresa'=>'required|string',
+            'broj_zvezdica'=>'required|string'
+
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+        $hotel-> naziv=$request->naziv;
+        $hotel->adresa=$request->adresa;
+        $hotel->broj_zvezdica=$request->broj_zvezdica;
+        $hotel->save();
+
+        return response()->json(['Uspesno izmenjen hotel!',new HotelResource($hotel)]);
     }
 
     /**
@@ -80,6 +116,7 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        $hotel->delete();
+        return response()->json('Uspesno obrisan hotel!');
     }
 }

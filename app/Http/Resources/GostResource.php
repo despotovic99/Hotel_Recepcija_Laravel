@@ -24,7 +24,7 @@ class GostResource extends JsonResource
             'email'=>$this->resource->email,
             'br_telefona'=>$this->resource->br_telefona	,
             'pol'=>$this->resource->pol,
-            'straniGost'=>$this->resource->straniGost
+            'strani_gost'=>$this->resource->strani_gost
         ];
     }
 }
