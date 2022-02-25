@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         Hotel::truncate();
 
         Gost::factory(2)->create();
-
+        //todo popuni bazu koristeci seeder
     }
 }

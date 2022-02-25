@@ -15,13 +15,13 @@ class HotelskaSobaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'broj'=>$request->broj,
-            'sprat'=>$request->sprat,
-            'broj_kreveta'=>$request->broj_kreveta,
-            'hotel'=>$request->hotel,
-            'terasa'=>$request->terasa,
-            'kuhinja'=>$request->kuhinja,
-            'minibar'=>$request->minibar,
+            'broj'=>$this->resource->broj,
+            'sprat'=>$this->resource->sprat,
+            'broj_kreveta'=>$this->resource->broj_kreveta,
+            'hotel'=>new HotelResource(Hotel::find($this->resource->hotel)),
+            'terasa'=>$this->resource->terasa,
+            'kuhinja'=>$this->resource->kuhinja,
+            'minibar'=>$this->resource->minibar,
         ];
     }
 }

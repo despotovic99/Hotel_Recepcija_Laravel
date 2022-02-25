@@ -17,7 +17,7 @@ class HotelskaSobaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            //todo zavrsi factory
         ];
     }
 }
