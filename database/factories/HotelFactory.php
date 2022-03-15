@@ -17,7 +17,10 @@ class HotelFactory extends Factory
     public function definition()
     {
         return [
-            //todo zavrsi hotelfactory
+
+            'naziv'=>$this->faker->randomElement(['Hotel','Motel','Prenociste']).''.$this->faker->randomNumber(),
+            'adresa'=>$this->faker->address(),
+            'broj_zvezdica'=>$this->faker->randomElement(['0','1','2','3','4','5'])
         ];
     }
 }

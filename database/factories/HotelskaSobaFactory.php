@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,14 @@ class HotelskaSobaFactory extends Factory
      */
     public function definition()
     {
+        $sprat=$this->faker->numberBetween(1,9);
         return [
-            //todo zavrsi factory
+            'broj'=>$sprat.''.$this->faker->unique()->numerify('##'),
+            'sprat'=>$sprat,
+            'broj_kreveta'=>$this->faker->numberBetween(1,6),
+            'terasa'=>$this->faker->randomElement([true,false]),
+            'kuhinja'=>$this->faker->randomElement([true,false]),
+            'minibar'=>$this->faker->randomElement([true,false]),
         ];
     }
 }
