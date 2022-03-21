@@ -46,7 +46,7 @@ class RezervacijaController extends Controller
             'gost_id'=>['required','integer',new PostojiGost()],
             'datum_od'=>'required|date',
             'datum_do'=>'required|date',
-            'cena'=>'required|float'
+            'cena'=>'required|numeric'
         ]);
 
         if($validator->fails()){
@@ -99,7 +99,7 @@ class RezervacijaController extends Controller
             'gost_id'=>['required','integer',new PostojiGost()],
             'datum_od'=>'required|date',
             'datum_do'=>'required|date',
-            'cena'=>'required|float'
+            'cena'=>'required|numeric'
         ]);
 
         if($validator->fails()){

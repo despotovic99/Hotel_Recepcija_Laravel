@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Gost;
 use App\Models\HotelskaSoba;
 use Illuminate\Http\Resources\Json\JsonResource;
 

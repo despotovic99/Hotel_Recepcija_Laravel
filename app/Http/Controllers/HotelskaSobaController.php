@@ -76,6 +76,7 @@ class HotelskaSobaController extends Controller
      */
     public function show(HotelskaSoba $hotelskaSoba)
     {
+        return response()->json($hotelskaSoba);
         return new HotelskaSobaResource($hotelskaSoba);
     }
 

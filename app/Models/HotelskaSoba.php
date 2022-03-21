@@ -9,4 +9,12 @@ class HotelskaSoba extends Model
 {
     use HasFactory;
     protected $guarded=[''];
+
+    public function hotel(){
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function rezervacija(){
+        return $this->belongsToMany(Rezervacija::class);
+    }
 }

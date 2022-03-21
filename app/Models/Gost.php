@@ -12,7 +12,7 @@ class Gost extends Model
     protected $guarded=[''];
 
     public function rezervacija(){
-        //return $this->hasMany(Rezervacija::class);
+        return $this->hasMany(Rezervacija::class);
     }
 
 }
